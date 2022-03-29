@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "raddersdemo-5aad"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "raddersdemo-5aad"
+  template:
+    metadata:
+      labels:
+        app: "raddersdemo-5aad"
+    spec:
+      containers:
+        - name: "raddersdemo-5aad"
+          image: "radders.azurecr.io/raddersdemo"
+          ports:
+          - containerPort: 80
