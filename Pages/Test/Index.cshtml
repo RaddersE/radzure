@@ -1,0 +1,48 @@
+﻿@page
+@model radzure.Pages.Test.IndexModel
+
+@{
+    ViewData["Title"] = "Stock Control";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock[0].ItemNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock[0].Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Stock) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ItemNo">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ItemNo">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ItemNo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
